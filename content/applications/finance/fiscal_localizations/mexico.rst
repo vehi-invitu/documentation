@@ -215,7 +215,7 @@ the contact name, full :guilabel:`Address` including: :guilabel:`ZIP` code, :gui
    added in the :guilabel:`Sales & Purchase` tab.
 
 .. warning::
-   Having a |RFC| (:guilabel:`Tax ID`) set but no Country configured may result in incorrect invoices.
+   Having a |RFC| (:guilabel:`Tax ID`) set but no :guilabel:`Country` configured may result in incorrect invoices.
 
 .. FEAV NOTE - we've got 100+ tickets of customers having errors for forgetting the country: the warning is needed. context here- https://www.odoo.com/odoo/project.task/3891896?cids=17
 
@@ -273,10 +273,10 @@ Purchase --> Fiscal Information`, and activate the :guilabel:`No Tax Breakdown` 
 Other tax configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Mexican Localization uses :doc:`Cash basis taxes <../../finance/accounting/taxes/cash_basis>`
-So, when registering a payment, Odoo will carry out the movement of taxes from the *Cash Basis
+The Mexican Localization uses :doc:`Cash basis taxes <../../finance/accounting/taxes/cash_basis>`.
+So, when registering a payment, Odoo carries out the movement of taxes from the *Cash Basis
 Transition Account* to the account set in the :guilabel:`Definition` tab. For such movement, a tax
-base account will be used: (`899.01.99 Base Imponible de Impuestos en Base a Flujo de Efectivo`) in the
+base account is used: (`899.01.99 Base Imponible de Impuestos en Base a Flujo de Efectivo`) in the
 journal entry when reclassifying taxes. **Do not delete this account**.
 
 Products
@@ -324,9 +324,9 @@ section, enter the name of your |PAC| with your credentials (:guilabel:`Username
 The `digital certificates of the company
 <https://www.gob.mx/tramites/ficha/certificado-de-sello-digital/SAT139>`_ must be uploaded within
 the :guilabel:`Certificates` section. To do so, navigate to :menuselection:`Settings -->
-Accounting --> MX Electronic invoicing`. Under the :guilabel:` Certificates` section, select
+Accounting --> MX Electronic invoicing`. Under the :guilabel:`Certificates` section, select
 :guilabel:`Add a line`, and a window will open. From there, upload your digital :guilabel:`Certificate`
-(:file:`.cer` file), your :guilabel:`Certificate Key`(:file:`.key` file), and your 
+(:file:`.cer` file), your :guilabel:`Certificate Key` (:file:`.key` file), and your 
 :guilabel:`Certificate Password`. To finish, click on :guilabel:`Save & Close`.
 
 .. image:: mexico/mx-certificates.png
@@ -479,14 +479,14 @@ If a fully-conciliated payment is related to an invoice with a Fiscal Folio, the
 automatically and it'll appear in the |CFDI| tab in both the Invoice and the Payment. 
 
 .. tip::
-   While it is a bad fiscal practice, you can also send PUE Payments to the government, however you need 
-   to press :guilabel:`Force CFDI` in the :guilabel:`CFDI` tab for this.
+   While it is a bad fiscal practice, you can also send PUE payments to the government, however you need 
+   to press *Force CFDI* in the *CFDI* tab for this.
 
 .. image:: mexico/mx-signed-complement.png
    :align: center
    :alt: Payment Complement sucessfully signed.
 
-Similar to an Invoice or Credit Note, you can send the PDF and XML to the final customer. To do so, click
+Similar to an invoice or credit note, you can send the PDF and XML to the final customer. To do so, click
 the :icon:`fa-cog` :guilabel:`(gear)` to open the actions drop-down menu and select :guilabel:`Send receipt 
 by email`.
 
@@ -499,7 +499,7 @@ there are two requirements for this:
 
 - With all cancellation requests, you **must** specify a *cancellation reason*.
 - After 24 hours have passed since the creation of the invoice, if certain conditions are met, the 
- client **must** be asked to accept or reject the cancellation.
+  client **must** be asked to accept or reject the cancellation.
 
 .. FEAV Note - Do you guys have any idea how to add the section "¿El proceso de cancelación de un CFDI cambia dependiendo de la versión en que se emitió el CFDI?" in here? It is very important, literally the most
 common support ticket  https://www.sat.gob.mx/consultas/91447/nuevo-esquema-de-cancelacion#
@@ -527,7 +527,7 @@ field having the value `04|` plus the :guilabel:`Fiscal Folio` of the old docume
 
 Next, confirm and sign the invoice with the correct information and navigate to the invoice to cancel
 where the field :guilabel:`Substituted By` is now available. Click the :guilabel:`Request Cancel` button 
-again. The button :guilabel:`Create Replacement Invoice` will be reeplaced by :guilabel:`Confirm`.
+again. The button :guilabel:`Create Replacement Invoice` will be replaced by :guilabel:`Confirm`.
 
 Finally, click the button and the :guilabel:`SAT Status` will change to **Not Defined** where after pressing
 :guilabel:`Update SAT` both the invoice status and |SAT| status field will change to **Canceled**
@@ -551,13 +551,13 @@ Finally, click the button and the :guilabel:`SAT Status` will change to **Not De
 
 .. seealso::
    `Tool to validate Mexican Electronic Documents (CFDI) status.
-   <https://verificacfdi.facturaelectronica.sat.gob.mx/>`_.
+   <https://verificacfdi.facturaelectronica.sat.gob.mx/>`_
 
 
 For the cancellation reasons **02**, **03** and **04**, the button :guilabel:`Create Replacement Invoice`
 won't appear and you'll be able to ask for the request immediately.
 
-You can see both the current :guilabel:`State` and :guilabel:`Cancellation Reason` in the |CFDI| tab.
+You can see both the current :guilabel:`State` and :guilabel:`Cancellation Reason` in the :guilabel:`CFDI` tab.
 
 .. image:: mexico/mx-cancellation-reason-tab.png
    :align: center
@@ -570,7 +570,7 @@ Payment cancellations
 *********************
 
 It is also possible to cancel *Payment Complements*. Go to the :guilabel:`CFDI` of either the related invoice 
-or the payment itself and press **Cancel**.
+or the payment itself and press :guilabel:`Cancel`.
 
 Like with Invoices, you will need to go to the Payment and press :guilabel:`Update SAT` in order to change
 the :guilabel:`SAT Status` and **Status** to *Cancelled*
@@ -613,11 +613,11 @@ Discounts
 **********
 
 By law, electronic document sent to the government cannot have negative lines, as this can trigger errors. Therefore,
-when you utilize :doc:`Gift Cards <../../sales/sales/products_prices/ewallets_giftcards>` or :doc:`Loyalty Programs <../../sales/sales/products_prices/loyalty_discount>` the subsecuent negative lines will be translated in the XML as if they were regular 
-:doc:`Discounts <../../sales/sales/products_prices/prices/pricing/>`
+when you utilize :doc:`Gift Cards <../../sales/sales/products_prices/ewallets_giftcards>` or :doc:`Loyalty Programs <../../sales/sales/products_prices/loyalty_discount>` the subsequent negative lines will be translated in the XML as if they were regular 
+:doc:`Discounts <../../sales/sales/products_prices/prices/pricing/>`.
 
 In order to set this up, navigate to :menuselection:`Sales --> Products --> Products` and create a product `Discounts`,
-make sure that it has a valid Tax (Usually IVA 16%)
+make sure that it has a valid :guilabel:`Tax` (usually :guilabel:`IVA` at `16%`).
 
 After this, create and sign your invoice, and add the `Discounts` product at the bottom. In the XML the discount should
 be substracted from the first invoice line available.
@@ -637,7 +637,7 @@ A common practice in Mexico is the usage of :doc:`Down Payments <../../sales/sal
 It's usage primary consists of cases where you receive a payment for a good or service where either the 
 product or the price (or both) hasn't been determinated at the moment. 
 
-The |SAT| allows two diferent ways to handle this process: Both of them involve linking all invoices to 
+The |SAT| allows two diferent ways to handle this process: both of them involve linking all invoices to 
 each other with the :guilabel:`CFDI Origin` field. 
 
 For this process, it is necessary to have the :doc:`Sales <../../sales>` app installed.
@@ -662,11 +662,11 @@ Then, go to :menuselection:`Sales --> Settings --> Invoicing --> Down Payments`,
 
 .. FEAV Note - This is not necessary anymore in 17.1+, should it be worth it to menction it?  
 
-Method "A"
-^^^^^^^^^^^
+Method A
+^^^^^^^^
 
 This method consists in creating a Down Payment invoice, creating a invoice for the total amount, and
-finally, a Credit Note for the total of the Down Payment.
+finally, a credit note for the total of the down payment.
 
 First, create a sales order with the total amount, and create down payment from it (either using a 
 percentage or fixed amount). Then, sign the document, and register the payment.
@@ -680,8 +680,8 @@ delete the line that contains the product "Anticipo".
    :alt: Invoice for the Total
 
 .. tip::
-   If you are going to use Down Payments with the Mexican Localization, make sure that the :guilabel:`Invoicing Policy`
-   of your products are **Ordered quantities.** Otherwise a Customer Credit Note will be created.
+   If you are going to use down payments with the Mexican localization, make sure that the :guilabel:`Invoicing Policy`
+   of your products are :guilabel:`Ordered quantities`. Otherwise a customer credit note will be created.
 
 Then, copy the :guilabel:`Fiscal Folio` from the down payment invoice, and paste it into the
 :guilabel:`CDFI Origin` of the final invoice, adding the prefix `07|` before the value. Then, sign
@@ -696,21 +696,21 @@ invoice. At the bottom of the new invoice, you can find the credit note in the
 :guilabel:`Outstanding credits` - add it as payment. Finally, register the remaining amount with the
 :guilabel:`Register Payment` wizard.
 
-In the Sales Order, all three documents should appear as "In Payment".
+In the sales order, all three documents should appear as "In Payment".
 
 .. image:: mexico/mx-downpayment-2.png
    :align: center
    :alt: Correct results of Method A
 
-Method "B"
-^^^^^^^^^^
+Method B
+^^^^^^^^
 
-Another, simpler way to fullfil SAT Requeriements involves creating only the Down Payment invoice, and
+Another, simpler way to fulfill |SAT| requirements involves creating only the down payment invoice, and
 a second invoice for the remnant. This method involves the fact that negative lines are treated as discounts.
 
-For this, follow the same process as Method "A", up until the creation of the final invoice. Don't delete
-the line that contain the product "Anticipo", and instead, rename the other products :guilabel:`Description`
-to include the text "|CFDI| por remanente de un anticipo". Don't forget to add the :guilabel:`Fiscal Folio`
+For this, follow the same process as :ref:`Method A <l10n-mx/down-payment-method-a>`, up until the creation of the final invoice. Don't delete
+the line that contains the *Anticipo* product, and instead, rename the other products :guilabel:`Description`
+to include the text `CFDI por remanente de un anticipo`. Don't forget to add the :guilabel:`Fiscal Folio`
 of the down payment invoice in the :guilabel:`CDFI Origin` of the final invoice, adding the prefix `07|`.
 
 Finally, sign the final invoice. 
@@ -719,12 +719,12 @@ Finally, sign the final invoice.
    :align: center
    :alt: Correct results of Method B
 
-XML Reader
+XML reader
 **********
 
-In certain ocassions, such as when you are creating invoices in another software or in the |SAT| directly,
+In certain occasions, such as when you are creating invoices in another software or in the |SAT| directly,
 you would want to upload the invoices in Odoo. The XML Reader allows you to retrieve the data from an .XML
-file: To do this, navigate to :menuselection:`Accounting --> Customers --> Invoices` and, in the list view, you
+file. To do this, navigate to :menuselection:`Accounting --> Customers --> Invoices` and, in the list view, you
 can press the :guilabel:`Upload` button to select any number of .XML files, and draft invoices will be
 automatically created. This can work also by dragging the files from your computer and dropping them in
 the view.
@@ -748,21 +748,21 @@ If you use the :guilabel:`Send & Print` the PDF Document will have all the corre
 This can be done for :guilabel:`Vendor Bills` too.  
 
 .. tip::
-   - You can also drag and drop XML files for already created draft Invoices. It'll retreive the :guilabel:`Fiscal Folio`
+   You can also drag and drop XML files for already created draft invoices and Odoo retrieves the :guilabel:`Fiscal Folio`.
 
 .. feav note - 18.0 can now conciliate with PO
 
 CFDI to public
 **************
 
-The Mexican Government requires that any goods or services that you might sell should be backed up by
+The Mexican government requires that any goods or services that you might sell should be backed up by
 an invoice. If the customer you are selling to does not require an invoice or has no |RFC|, a 
 *CFDI to Public* has to be created. 
 
 If you select the :guilabel:`CFDI to Public` checkbox in either a Sale Order or an Invoice, the final XML
 will override the data in the invoice contact and will add the following characteristics:
 
-- |RFC|: **XAXX010101000** if it is a National Customer or **XEXX010101000** if it is a Foregin Customer
+- |RFC|: **XAXX010101000** if it is a national customer or **XEXX010101000** if it is a foreign customer 
 - :guilabel:`ZIP` code: The same code of the company
 - :guilabel:`Usage`: S01 - Without Fiscal Effects
 
@@ -771,11 +771,11 @@ will override the data in the invoice contact and will add the following charact
    :alt: CFDI to Public Checkbox
 
 .. important::
-   If your contact Country is empty, the final invoice will be considered as a *CFDI to Public* for national 
+   If your contact *Country* is empty, the final invoice is considered as a *CFDI to Public* for national 
    customers. You'll receive a non-blocking warning before signing the document. 
 
 If the final customer doesn't share any details with you, you can also create a generic :guilabel:`Customer`.
-It's name cannot be `PUBLICO EN GENERAL` or an error will be triggered. (It can be, for example, `CLIENTE FINAL`).
+It's name cannot be `PUBLICO EN GENERAL` or an error will be triggered (it can be, for example, `CLIENTE FINAL`).
 
 .. seealso::
    `Regla 2.7.1.21 Expedición de comprobantes en operaciones con el público en general.
@@ -784,10 +784,10 @@ It's name cannot be `PUBLICO EN GENERAL` or an error will be triggered. (It can 
 Global invoice
 **************
 
-If by the end of a certain period of time (That can vary from daily to bimonthly, depending of your company's
+If by the end of a certain period of time (that can vary from daily to bimonthly, depending of your company's
 legal needs and preferences) and the customer still has sales that weren't marked as regular invoices or 
 individual *CFDI to Public* invoices, the |SAT| allows for the creation of a single invoice that can contain all 
-operations, known as a **Global Invoice**.
+operations, known as a *Global Invoice*.
 
 To do so, the :doc:`Sales <../../sales/sales>` app needs to be installed.
 
@@ -801,12 +801,12 @@ Sales flow
 First, it is necessary to create a special :guilabel:`Journal` created in :menuselection:`Accounting --> 
 Configuration --> Journals` with the purpose of keeping a separate sequence. 
 
-Then, make sure that all of your Sales Orders that you want to sign have the following configurations:
+Then, make sure that all of your sales orders that you want to sign have the following configurations:
 
 - All of them have the :guilabel:`CFDI to Public` checkbox enabled.
 - All of them have the :guilabel:`Invoicing Journal` that you created, in the :guilabel:`Other Info` tab
  with the :doc:`debug mode <../../general/developer_mode>` enabled.
-- All of them have the :guilabel:`Invoice Status` marked as **To Invoice**.
+- All of them have the :guilabel:`Invoice Status` marked as :guilabel:`To Invoice`.
 
 .. image:: mexico/mx-global-invoice1.png
    :align: center
@@ -816,8 +816,8 @@ After this, go to :menuselection:`Sales --> To Invoice --> Orders to Invoice`, s
 orders and press :guilabel:`Create Invoices`. Make sure to disable the :guilabel:`Consolidated Billing`
 checkbox and press :guilabel:`Create Draft Invoice`.
 
-You will be redirected to a list of invoices. Select all of them and in the **Actions** drop-down menu 
-select :guilabel:`Post entries`. Select all posted invoices again and go back to the **Actions** drop-down 
+You will be redirected to a list of invoices. Select all of them and in the :icon:`fa-gear` :guilabel:`Actions` drop-down menu 
+select :guilabel:`Post entries`. Select all posted invoices again and go back to the  :icon:`fa-gear` :guilabel:`Actions` drop-down 
 menu to select :guilabel:`Create Global Invoice`.
 
 In the wizard, select the :guilabel:`Periodicity` that fits your business needs and press :guilabel:`Create`.
@@ -828,8 +828,8 @@ All invoices should be signed under the same XML file, with the same :guilabel:`
    :alt: Invoice successfully signed Globally
 
 .. tip::
-   - By pressing **Show** in the |CFDI| tab, you will be able to see a list with all related invoices.
-   - By pressing **Cancel** in the |CFDI| tab, you will be able to cancel the global invoice in both the |SAT|
+   - By pressing :guilabel:`Show` in the :guilabel:`CFDI` tab, you will be able to see a list with all related invoices.
+   - By pressing :guilabel:`Cancel` in the :guilabel:`CFDI` tab, you will be able to cancel the global invoice in both the |SAT|
    and Odoo. 
 
 .. note::
@@ -840,20 +840,20 @@ Point of sale
 
 The :doc:`Point of sale <../../sales/point_of_sale>` adaptation of the Mexican Localization let's you create
 invoices that comply with the |SAT| requeriements directly in the **POS session**, with the added benefit of creating
-receipt tickets that allow *self-invoicing* in a special portal, and the creation of Global Invoices with a just couple clicks.
+receipt tickets that allow *self-invoicing* in a special portal, and the creation of global invoices with a just couple clicks.
 
 Point of sale flow
-~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
 
-Other than the standard :doc:`Point of Sale Configuration <../../sales/point_of_sale/configuration>`, the only requeriement for the Mexican Localization is the
-addition fact that each Payment Method needs to be configured with a Journal that contains a correct :guilabel:`Payment Way`.
+Other than the standard :doc:`Point of Sale configuration <../../sales/point_of_sale/configuration>`, the only requirement for the Mexican localization is the
+addition fact that each payment method needs to be configured with a journal that contains a correct :guilabel:`Payment Way`.
 
-By continuing the regular Point of Sale flow, by clicking the Customer button you can either create or select 
+By continuing the regular **Point of Sale** flow, by clicking the :guilabel`Customer` button you can either create or select 
 a customer. You can make sure that your customer invoicing information (such as the RFC or Fiscal Regime) is
 correct and even modify it directly from the session. 
 
-After selecting a customer, you can press the Invoice button. A menu will appear for you to select the :guilabel:`Usage`
-and to determine if it is an Invoice to public. Press confirm and then validate to complete the order.
+After selecting a customer, you can press the :guilabel:`Invoice` button. A menu will appear for you to select the :guilabel:`Usage`
+and to determine if it is an invoice to public. Press confirm and then validate to complete the order.
 The PDF will be downloaded and will be able to be sent via mail to the final customer alongside the receipt. 
 
 .. tip::
@@ -868,49 +868,50 @@ You can also create and sign Credit notes automatically by selecting an order an
 you select again the "invoice" button.
 
 .. important::
-   - In the Mexican Localization, you cannot mix positive and negative lines in a POS session.
-   - If you receive a SAT Validation Error, customer will get a :doc:`Pro-Forma <../../sales/sales/invoicing/proforma>` Invoice instead.
+   - In the Mexican localization, you cannot mix positive and negative lines in a **POS** session.
+   - If you receive a |SAT| validation error, customer will get a :doc:`Pro-Forma <../../sales/sales/invoicing/proforma>` invoice instead.
 
 Self-invoicing portal
-~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 
 If the final customer is not sure if they want to have their invoice generated at the exact moment of the sale,
-you can add the option of creating an Receipt with either a QR code or a Five Digit Code in the settings of your Point of Sale Session
+you can add the option of creating an receipt with either a QR code or a five digit code in the settings of your **Point of Sale** session
 in :menuselection:`Point of Sale --> Configuration --> Bills & Receipts` and select :guilabel:`Use QR code on ticket`,
 :guilabel:`Generate a code on ticket` or both. 
 
-This will provide access to a special menu where they can add their fiscal information, including the **Usage** and
-**Fiscal Regime**
+This will provide access to a special menu where they can add their fiscal information, including the *Usage* and
+*Fiscal Regime*.
 
 .. image:: mexico/mx-pos-portal.png
    :align: center
    :alt: Customer Portal for Electronic Invoicing
 
 .. seealso::
-   :doc:`../sales/point_of_sale/receipts_invoices`
+   :doc:`../../sales/point_of_sale/receipts_invoices`
 
 Global invoice
-~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
 As with regular sales orders, you can also create global invoices from a POS session. 
 
-For this, make sure to not select neither any Customer nor the Invoice option in the Payment menu and go to :menuselection:`Point of Sale --> Orders --> Orders`.
+For this, make sure not to select a customer or the invoice option in the payment menu and go to :menuselection:`Point of Sale --> Orders --> Orders`.
 There, select all the orders to invoice, click the :icon:`fa-cog` :guilabel:`(gear)` to open the actions drop-down menu and select :guilabel:`Create Global Invoice`. 
 
-Like with sales orders, choose the correct :guilabel:`Periodicity` and press **Create**
+Like with sales orders, choose the correct :guilabel:`Periodicity` and press :guilabel:`Create`.
 
 .. image:: mexico/mx-pos-gi.png
    :align: center
    :alt: Global Invoice POS
 
-This will attach a XML file in all orders, and you'll be able to download it by going to the |CFDI| tab. If needed, in the same tab you can cancel the invoice.
+This attaches an XML file in all orders, and can be downloaded by going to the :guilabel:`CFDI` tab. If needed, in the same tab you can cancel the invoice.
+
 .. important::
-   - In order to use this feature, you need to make sure not to use taxes **Included in the Price** to prevent rounding issues.
+   In order to use this feature, you need to make sure not to use taxes *Included in the Price* to prevent rounding issues.
 
 If eventually any of the orders thar are part of the Global Invoice needs to be addressed to a customer, you can still send an invoice in the same view by pressing :guilabel:`Refund` and :guilabel:`Payment` to create a **REFUND** order and then create the corresponding Invoice in the original order with a c
 
-This can also be done in the POS Session, by going to the **Order** menu and pressing **Invoice**. It'll ask you to add a customer
-for both the credit note of the Global Invoice and the new Invoice to be created automatically.
+This can also be done in the **POS** session, by going to the :guilabel:`Order` menu and pressing :guilabel:`Invoice`. It'll ask you to add a customer
+for both the credit note of the global invoice and the new invoice to be created automatically.
 
 eCommerce
 ---------
