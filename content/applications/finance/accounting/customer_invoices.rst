@@ -90,6 +90,8 @@ tab.
 
 .. image:: customer_invoices/invoice04.png
 
+.. _accounting/invoice/sending:
+
 Send the invoice to customer
 ----------------------------
 
