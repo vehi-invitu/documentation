@@ -9,7 +9,7 @@ and invoicing.
 Settings
 ========
 
-To properly utilize multiple addresses in Odoo, go to :menuselection:`Sales app --> Configuration
+To properly utilize multiple addresses in Odoo, go to :menuselection:`Accounting --> Configuration
 --> Settings` and scroll down to the :guilabel:`Quotations & Orders` heading. Then, check the box
 next to :guilabel:`Customer Addresses`, and click :guilabel:`Save`.
 
