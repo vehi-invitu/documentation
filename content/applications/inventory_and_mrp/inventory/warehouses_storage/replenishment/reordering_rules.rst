@@ -2,6 +2,8 @@
 Reordering rules
 ================
 
+.. |SOs| replace:: :abbr:`SOs (Sales Orders)`
+
 .. _inventory/management/reordering_rules:
 
 Reordering rules are used to keep forecasted stock levels above a certain threshold without
@@ -199,51 +201,72 @@ Visibility days
 .. important::
    Ensure :doc:`lead times <lead_times>` are understood before proceeding with this section.
 
-When :ref:`manual reordering rules <inventory/product_management/manual-rr>` are assigned to a
-product, *visibility days* make the product appear on the replenishment dashboard
-(:menuselection:`Inventory app --> Operations --> Replenishment`) a certain number of days in
-advance.
+*Visibility days*  allow businesses to optimize reordering rules by strategically grouping purchase
+orders for upcoming needs. This reduces transport costs and leverages supplier discounts for larger
+orders by consolidating quantities required now and in the near future.
+
+For example:
+
+- A company places orders every Monday, with a vendor lead time of seven days. Odoo plans the
+  :guilabel:`To Order` quantity for the period from this Monday to next Monday.
+- However, a sales order (SO) is due next Tuesday. Without visibility days, this need will only
+  appear on the replenishment report tomorrow (Tuesday), **prompting a separate order and additional
+  shipping costs**.
+
+Context
+-------
+
+To understand how visibility days help with the typical ordering process, it must be understood that
+a reordering rule's *Forecast* and *To Order* quantities is dependent on a **set range of dates**.
+
+By default, Odoo's range of dates is between between the current date plus the purchase lead time.
+The *Forecast* and *To Order* quantities are calculated based on the number of open |SOs| with the
+delivery date within this range.
+
+.. note::
+   When the product has multiple vendors, the chosen purchase lead time is based on the selected
+   vendor in the :guilabel:`Vendor` column (click the :icon:`oi-settings-adjust`
+   :guilabel:`(sliders)` icon to enable) or the selected vendor in the :guilabel:`Lead Times` pop-up
+   window found by clicking the :icon:`fa-info-circle` :guilabel:`(i)` icon.
 
 .. example::
-   A product has a manual reordering rule set to trigger when the stock level falls below four
-   units. The current on-hand quantity is ten units.
 
-   The current date is February twentieth, and the *delivery date* on a sales order (in the
-   :guilabel:`Other Info` tab) is March third — twelve days from the current date.
+   Continuing the example from above, with the vendor lead time of 7 days, with the following |SOs|:
+   - SO 1: 1 unit with a delivery deadline in 5 days
+   - SO 2: 3 units with a delivery deadline in 9 days
 
-   The :ref:`vendor lead time <inventory/management/purchase-lt>` is four days, and the
-   :ref:`purchase security lead time <inventory/management/purchase-security-lt>` is one day.
+   .. figure:: reordering_rules/default-range.png
+      :alt: Default range of dates.
 
-   When the :guilabel:`Visibility Days` field of the reordering rule is set to zero, the product
-   appears on the replenishment dashboard five days before the delivery date, which, in this case,
-   is February twenty-seventh.
+      Demands within 7 days are visible on the replenishment report.
 
-   .. image:: reordering_rules/need-dates.png
-      :align: center
-      :alt: Graphic representing when the need appears on the replenishment dashboard: Feb 27.
+   With the default range, replenishment report will only show demand for up to the next 7 days. In
+   that case, the :guilabel:`To Order` quantity is `1`.
 
-   To see the product on the replenishment dashboard for the current date, February twentieth, set
-   the :guilabel:`Visibility Days` to `7.00`.
+   .. image:: reordering_rules/no-visibility.png
+      :alt: Show normal demand.
 
-To determine the number of visibility days needed to see a product on the replenishment dashboard,
-subtract *today's date* from the *date the need appears* on the replenishment dashboard.
+Set visibility days
+-------------------
 
-.. math::
+To set a visibility day to incorporate orders in the near future, navigate to
+:menuselection:`Inventory app --> Operations --> Replenishment`.
 
-   Visibility~days = Need~appears~date - Today's~date
+Next, enable the :guilabel:`Visibility Days` field by clicking the :guilabel:`(sliders)` icon to the
+far right and choosing the feature from the drop-down menu. Then, enter the desired visibility days.
 
 .. example::
-   Referring to the example above, today's date is February twentieth, and the need for the product
-   appears on February twenty-seventh.
 
-   (February 27 - February 20 = 7 days)
+   To continue the above example, after adding `2.00` to visiblity days, the demand for SO 2 in 9
+   days is also considered, as the :guilabel:`To Order` quantity has been updated to `4.00`.
 
-   Incorrectly setting the :guilabel:`Visibility Days` fewer than seven days in this case results in
-   the need **not** appearing on the replenishment dashboard.
+   .. figure:: reordering_rules/extended.png
+      :alt: Extended range of dates.
 
-   .. image:: reordering_rules/visibility-days.png
-      :align: center
-      :alt: Show the replenishment dashboard with the correct and incorrect visibility days set.
+      Demands within 7 (+ 2) days are visible on the replenishment report.
+
+   .. image:: reordering_rules/visibility.png
+      :alt: Show demand with visibility days included.
 
 .. _inventory/product_management/route:
 
