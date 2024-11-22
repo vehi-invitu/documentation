@@ -84,8 +84,10 @@ selected:
 - :guilabel:`Pass - Fail` checks specify a criterion that products must meet for the check to pass.
 - :guilabel:`Measure` checks prompt employees to record a measurement of the product that must be
   within a tolerance of a norm value for the check to pass.
-- :guilabel:`Worksheet` checks provide an interactive worksheet that must be filled out by the
-  employee processing the check.
+- :guilabel:`Worksheet` checks require the employee processing the check to fill out an interactive
+  worksheet.
+- :guilabel:`Spreadsheet` checks require the employee processing the check to fill out an
+  interactive spreadsheet.
 
 .. important::
    An *Instructions* check is the same as a step on a work order for an MO.
@@ -96,6 +98,18 @@ selected:
 
    However, when creating a control point specifically for quality control purposes, using a
    different check type is probably more effective.
+
+.. note::
+   When creating a |QCP| with the :guilabel:`Worksheet` or :guilabel:`Spreadsheet` check types, it
+   is necessary to specify a *Quality Worksheet Template* or *Quality Spreadsheet Template* in the
+   :guilabel:`Template` field that appears below the :guilabel:`Type` field.
+
+   The selected template is duplicated for each quality check created by the |QCP|, and must be
+   filled out to complete the quality check.
+
+   To create a new Quality Worksheet/Spreadsheet Template, open the :menuselection:`Quality` app,
+   navigate to :menuselection:`Configuration -> Quality Worksheet/Spreadsheet Templates`, and click
+   :guilabel:`New`.
 
 In the :guilabel:`Team` field, specify the quality team that is responsible for managing the |QCP|,
 and the quality checks it creates. If a specific quality team member is responsible for the |QCP|,
