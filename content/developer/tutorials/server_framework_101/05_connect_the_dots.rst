@@ -109,21 +109,29 @@ Constraints
 
 .. todo: change section title
 
-- Constraints enforce rules on model data to maintain integrity and validity.
-- Two Types:
-  - SQL constraints: Defined directly in the database schema and enforce data integrity at the database level.
-  - Python constraints: Defined in the model logic and enforce dynamic or conditional rules based on business logic.
-- They ensure that data follows the expected structure and rules, preventing errors like duplicate
-  entries, invalid relationships, or inconsistent values.
+**Constraints** are rules that enforce data integrity by validating field values and relationships
+between records. They ensure that the data stored in your application remains consistent and meets
+business requirements, preventing invalid values, duplicate entries, or inconsistent relationships
+from being saved to the database.
 
-
+In Odoo, constraints can be implemented at two different levels: directly in the database schema
+using **SQL constraints**, or in the model's logic using **Python constraints**. Each type has its
+own advantages and use cases, allowing developers to choose the most appropriate validation method
+based on their specific needs.
 
 .. _tutorials/server_framework_101/sql_constraints:
 
 SQL constraints
 ---------------
 
-tmp
+SQL constraints are database-level rules that are enforced directly by PostgreSQL when records are
+created or modified. They are highly efficient in terms of performance, but they cannot handle
+complex logic or access individual records. As a result, they are best suited for straightforward
+use cases, such as ensuring that a field value is unique or falls within a specific range.
+
+SQL constraints are defined in the model using the `_sql_constraints` class attribute. This
+attribute contains a list of tuples, with each tuple specifying the constraint's name, the SQL
+expression to validate, and the error message to display if the constraint is violated.
 
 .. todo: price more than zero
 .. todo: unique tag constraint
@@ -133,7 +141,19 @@ tmp
 Python constraints
 ------------------
 
-tmp
+..  They are less performant than SQL constraints, but can handle business logic and have access to records.
+    Executed when?
+
+Python constraints are record-level rules implemented through Python methods defined on the model.
+Unlike SQL constraints, they allow for flexible and context-aware validations based on business
+logic, at the expense of higher performance impact than SQL constraints, as they are evaluated
+server-side on recordsets. Use cases include ensuring that certain fields align with a specific
+condition or that multiple fields work together in a valid combination.
+
+Python constraints are defined in the model as methods decorated with :code:`@api.constrains()`,
+which specifies the fields that trigger the validation. These methods are triggered automatically
+when a record is created or updated, performing custom validation and raising validation errors if
+the constraint is violated.
 
 .. todo: accept only one offer
 
